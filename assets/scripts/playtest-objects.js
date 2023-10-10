@@ -1,31 +1,47 @@
-// playtest
-const movieList = document.getElementById("movie-list");
-movieList.style['backgroundColor'] = "red";
-movieList.style.direction = "block";
+// // // playtest
+// // const movieList = document.getElementById("movie-list");
+// // movieList.style['backgroundColor'] = "red";
+// // movieList.style.direction = "block";
 
-const userChosenKeyName = 'level';
+// // const userChosenKeyName = 'level';
 
-let person = {
-    "first-name": "Mark",
-    age: 26,
-    hobbies: ["Music", "Sports"],
-    [userChosenKeyName]: '...', 
-    greet: function () {
-        alert("Hi there!");
-    },
-    1.5: 'Hello',
-};
+// // let person = {
+// //     "first-name": "Mark",
+// //     age: 26,
+// //     hobbies: ["Music", "Sports"],
+// //     [userChosenKeyName]: '...',
+// //     greet: function () {
+// //         alert("Hi there!");
+// //     },
+// //     1.5: 'Hello',
+// // };
 
-// ...
+// // // ...
 
-delete person.age;
-person.isAdmin = true;
+// // delete person.age;
+// // person.isAdmin = true;
 
-const keyName = 'first-name';
+// // const keyName = 'first-name';
 
-// console.log(person["first-name"]);
-console.log(person[keyName]);
-console.log(person[1.5]);
-console.log(person);
+// // // console.log(person["first-name"]);
+// // console.log(person[keyName]);
+// // console.log(person[1.5]);
+// // console.log(person);
+
+// --- Spread operator example
+// const person = { name: "Mark", hobbies: ["Music", "Sports"] };
+// const anotherPerson = person;
+
+// person.age = 30;
+
+// const person2 = { ...person };
+// person.age = 31;
+
+// const person3 = { ...person, age: 29, hobbies: [...person.hobbies]};
 
 
+// --- object.assign example
+
+// const person = {name: 'Mark'};
+// const person2 = object.assing({}, person);
+// person2.name = 'Marco'
