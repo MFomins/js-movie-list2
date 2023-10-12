@@ -23,10 +23,11 @@ const renderMovies = (filter = "") => {
         const { info, ...otherProps } = movie; // object destruction
         console.log(otherProps);
         // const { title: movieTitle } = info; // for obj destruction training purposes
-        // const { getFormatedTitle } = movie;
-        let text = movie.getFormatedTitle() + " - ";
+        let { getFormatedTitle } = movie;
+        // getFormatedTitle = getFormatedTitle.bind(movie);
+        let text = getFormatedTitle.call(movie) + " - "; //bind executes later, and call exetuces immediately 
         for (const key in info /* movie.info before */) {
-            if (key !== "title") {
+            if (key !== "title" && key !== '_title') {
                 text = text + `${key}: ${info[key]}`;
             }
         }
@@ -39,20 +40,34 @@ const addMovieHandler = () => {
     const extraName = document.getElementById("extra-name").value;
     const extraValue = document.getElementById("extra-value").value;
 
-    if (title.trim() === "" || extraName === "" || extraValue === "") {
+    if ( extraName === "" || extraValue === "") {
         return;
     }
 
     const newMovie = {
         info: {
-            title, // if name is equal title: title, you can shorten it to just title
+            set title(val) {
+                if (val.trim() === '') {
+                    this._title = 'DEFAULT';
+                    return;
+                }
+                this._title = val;
+            },
+            get title() {
+                return this._title;
+            },
+            // title, // if name is equal title: title, you can shorten it to just title
             [extraName]: extraValue,
         },
         id: Math.random().toString(),
         getFormatedTitle() {
+            console.log(this);
             return this.info.title.toUpperCase();
-        }
+        },
     };
+
+    newMovie.info.title = title;
+    console.log(newMovie.info.title);
 
     movies.push(newMovie);
     renderMovies();

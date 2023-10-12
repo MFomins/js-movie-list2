@@ -39,9 +39,22 @@
 
 // const person3 = { ...person, age: 29, hobbies: [...person.hobbies]};
 
-
 // --- object.assign example
 
 // const person = {name: 'Mark'};
 // const person2 = object.assing({}, person);
 // person2.name = 'Marco'
+
+// --- this and arrow function
+
+const members = {
+    teamName: "Blue Rockets",
+    people: ["Mark", "Irina"],
+    getTeamMembers() {
+        this.people.forEach(p => {
+            console.log(p + ' - ' + this.teamName);
+        })
+    },
+};
+
+members.getTeamMembers()
